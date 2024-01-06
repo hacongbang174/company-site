@@ -7,7 +7,7 @@ export default function HomePage() {
   const [data, setData] = useState<any>({})
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_API_SERVER}/organizations/efe87002-8bc2-4306-9db6-205b487abba6?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
+      `https://gce.onedev.top/api/v1/site/organizations/efe87002-8bc2-4306-9db6-205b487abba6?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
     )
       .then((res) => res.json())
       .then((data) => {

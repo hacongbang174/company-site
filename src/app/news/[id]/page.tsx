@@ -9,7 +9,7 @@ export default function NewDetailPage({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_API_SERVER}/news/${params?.id}?include=user%2Cchapter%2Corganization%2Creactions%2Cmentions%2Cauthor%2Csummary%2Cimages%2Cparticipates%2Cbids%2Ctags%2Cchildren%2Cindustry`
+      `https://gce.onedev.top/api/v1/site/news/${params?.id}?include=user%2Cchapter%2Corganization%2Creactions%2Cmentions%2Cauthor%2Csummary%2Cimages%2Cparticipates%2Cbids%2Ctags%2Cchildren%2Cindustry`
     )
       .then((res) => res.json())
       .then((data) => {

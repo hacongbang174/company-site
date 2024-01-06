@@ -12,7 +12,7 @@ export default function ProductDetailPage({
 
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_API_SERVER}/e-commerce/products/${params?.id}?include=author%2Csummary%2Cuser%2Cproduct_category%2Cimages%2Corganization`
+      `https://gce.onedev.top/api/v1/site/e-commerce/products/${params?.id}?include=author%2Csummary%2Cuser%2Cproduct_category%2Cimages%2Corganization`
     )
       .then((res) => res.json())
       .then((data) => {
