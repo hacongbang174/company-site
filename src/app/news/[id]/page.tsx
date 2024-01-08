@@ -21,7 +21,7 @@ export default function NewDetailPage({ params }: { params: { id: string } }) {
     <div className="w-full">
       <Image
         alt="Album cover"
-        className="object-cover h-40"
+        className="object-cover h-[500px]"
         height={100}
         shadow="md"
         src={data?.images[0]?.image_url}
