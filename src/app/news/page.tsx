@@ -78,7 +78,7 @@ export default function NewsPage() {
                     {item?.name}
                   </div>
                   <div
-                    className="flex flex-col col-span-6 md:col-span-8 mt-4 max-h-[72px] lg:w-[570px] md:w-[470px] sm:w-[570px] w-[350px] overflow-hidden text-ellipsis"
+                    className="flex flex-col col-span-6 md:col-span-8 mt-4 max-h-[72px] lg:w-[570px] md:w-[470px] sm:w-[570px] w-[350px] overflow-hidden text-ellipsis line-clamp-4"
                     dangerouslySetInnerHTML={{ __html: item?.content }}
                   ></div>
 
