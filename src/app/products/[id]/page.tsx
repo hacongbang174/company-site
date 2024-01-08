@@ -33,16 +33,19 @@ export default function ProductDetailPage({
 
       <div className="w-full flex mt-4 justify-center">
         <div className="">
-          <Card isBlurred className="border-none w-[1200px]" shadow="sm">
-            <div className="flex">
+          <Card
+            isBlurred
+            className="border-none lg:w-[900px] md:w-[720px] sm:w-[600px] w-[350px]"
+            shadow="sm"
+          >
+            <div className="lg:flex md:flex">
               <Image
                 alt="Album cover"
-                className="object-cover h-auto w-[1800px]"
-                height={200}
+                className="object-cover h-auto lg:min-w-[300px] md:min-w-[200px] sm:w-[800px] w-[600px]"
                 shadow="md"
                 src={data?.images[0]?.image_url}
-                width="600px"
               />
+
               <div className="p-8">
                 <div className="relative col-span-6 md:col-span-4 flex">
                   <p className="mr-2 font-bold text-xl">
@@ -61,20 +64,29 @@ export default function ProductDetailPage({
                     <div className="flex mt-4">
                       <span className="text-red-500 font-bold">Liên hệ</span>
                     </div>
-                  ) : (
-                    <div className="flex mt-4">
-                      <span className="line-through mr-2">
-                        {(+data?.price).toLocaleString('it-IT', {
-                          style: 'currency',
-                          currency: 'VND',
-                        })}
-                      </span>
-                      <span className="text-red-500 font-bold">
+                  ) : +data?.percent_discount === 0 ? (
+                    <div className="">
+                      <p className="text-red-500 font-bold">
                         {(+data?.amount).toLocaleString('it-IT', {
                           style: 'currency',
                           currency: 'VND',
                         })}
-                      </span>
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="">
+                      <p className="line-through mr-2">
+                        {(+data?.price).toLocaleString('it-IT', {
+                          style: 'currency',
+                          currency: 'VND',
+                        })}
+                      </p>
+                      <p className="text-red-500 font-bold">
+                        {(+data?.amount).toLocaleString('it-IT', {
+                          style: 'currency',
+                          currency: 'VND',
+                        })}
+                      </p>
                     </div>
                   )}
                   {/* <span className="line-through mr-2">
@@ -90,10 +102,10 @@ export default function ProductDetailPage({
                     })}{' '}
                   </span> */}
                 </div>
-                <div className="flex flex-col col-span-6 md:col-span-8 mt-4 max-h-[72px] overflow-hidden text-ellipsis">
+                <div className="flex flex-col col-span-6 md:col-span-8 mt-4  lg:w-[570px] md:w-[470px] sm:w-[570px] w-[300px] overflow-hidden text-ellipsis">
                   Mô tả :
                 </div>
-                <div className="flex flex-col col-span-6 md:col-span-8 mt-4 max-h-[72px] overflow-hidden text-ellipsis">
+                <div className="flex flex-col col-span-6 md:col-span-8 mt-4  lg:w-[570px] md:w-[470px] sm:w-[570px] w-[300px] overflow-hidden text-ellipsis">
                   {data?.description}
                 </div>
 

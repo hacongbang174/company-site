@@ -46,15 +46,17 @@ export default function NewsPage() {
       {news.map((item: any, index: number) => (
         <div className="w-full flex mt-4 justify-center" key={index}>
           <div className="">
-            <Card isBlurred className="border-none w-[900px]" shadow="sm">
-              <div className="flex">
+            <Card
+              isBlurred
+              className="border-none lg:w-[900px] md:w-[720px] sm:w-[600px] w-[350px]"
+              shadow="sm"
+            >
+              <div className="lg:flex md:flex">
                 <Image
                   alt="Album cover"
-                  className="object-cover h-60 max-w-80"
-                  height={200}
+                  className="object-cover h-72 lg:min-w-[300px] md:min-w-[200px] sm:w-[800px] w-[600px]"
                   shadow="md"
                   src={item?.images[0]?.image_url}
-                  width="600px"
                 />
                 <div className="p-4">
                   <div className="relative col-span-6 md:col-span-4 flex">
@@ -76,7 +78,7 @@ export default function NewsPage() {
                     {item?.name}
                   </div>
                   <div
-                    className="flex flex-col col-span-6 md:col-span-8 mt-4 max-h-[72px] overflow-hidden text-ellipsis"
+                    className="flex flex-col col-span-6 md:col-span-8 mt-4 max-h-[72px] lg:w-[570px] md:w-[470px] sm:w-[570px] w-[350px] overflow-hidden text-ellipsis"
                     dangerouslySetInnerHTML={{ __html: item?.content }}
                   ></div>
 

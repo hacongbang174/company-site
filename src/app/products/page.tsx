@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Card, CardFooter, Image } from '@nextui-org/react'
+import { Card, CardBody, CardFooter, Image } from '@nextui-org/react'
 import Link from 'next/link'
 
 export default function ProductsPage() {
@@ -34,31 +34,38 @@ export default function ProductsPage() {
             <div className="flex mt-2 max-w-[1250px]">
               <Card
                 isBlurred
-                className="border-none bg-background/60 dark:bg-default-100/50 max-w-[400px] mr-2"
+                className="border-none bg-background/60 dark:bg-default-100/50 lg:max-w-[400px] max-w-[350px] mr-2"
                 shadow="sm"
               >
-                <div className="">
-                  <Image
-                    alt="Album cover"
-                    className="object-cover h-80 max-w-100"
-                    height={200}
-                    shadow="md"
-                    src={item?.images[0]?.image_url}
-                    width="600px"
-                  />
+                <Image
+                  alt="Album cover"
+                  className="object-cover h-80 max-w-100"
+                  height={200}
+                  shadow="md"
+                  src={item?.images[0]?.image_url}
+                  width="600px"
+                />
+                <CardBody className="flex flex-col col-span-6 md:col-span-8 font-bold mt-4">
                   <div className="p-4">
-                    <div className="flex flex-col col-span-6 md:col-span-8 font-bold mt-4 line-clamp-2">
-                      {item?.name}
-                    </div>
+                    <span className="line-clamp-2">
+                      {item?.name.toUpperCase()}
+                      {+item?.percent_discount === 0 ? (
+                        ''
+                      ) : (
+                        <span className="bg-pink-200 text-xl ml-2">
+                          -{+item?.percent_discount}%
+                        </span>
+                      )}
+                    </span>
                   </div>
-                </div>
+                </CardBody>
                 <CardFooter>
                   {+item?.price === 0 ? (
-                    <div className="flex mt-4">
+                    <div className="flex p-4">
                       <span className="text-red-500 font-bold">Liên hệ</span>
                     </div>
                   ) : (
-                    <div className="flex mt-4">
+                    <div className=" p-4">
                       <span className="line-through mr-2">
                         {(+item?.price).toLocaleString('it-IT', {
                           style: 'currency',
