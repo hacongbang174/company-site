@@ -14,7 +14,7 @@ import clsx from 'clsx'
 
 export const Navbar = () => {
   return (
-    <NextUINavbar isBordered className="bg-lime-100">
+    <NextUINavbar isBordered className="bg-lime-50">
       <NavbarBrand className="grow-0">
         <AcmeLogo />
         <p className="font-bold text-inherit">GCE</p>

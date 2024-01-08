@@ -45,10 +45,12 @@ export default function ProductDetailPage({
               />
               <div className="p-8">
                 <div className="relative col-span-6 md:col-span-4 flex">
-                  <span className="mr-2 font-bold text-xl">{data?.name}</span>
-                  <span className="bg-pink-200 text-xl">
-                    -{data?.percent_discount}%
-                  </span>
+                  <p className="mr-2 font-bold text-xl">
+                    {data?.name}
+                    <span className="bg-pink-200 text-xl ml-2">
+                      -{data?.percent_discount}%
+                    </span>
+                  </p>
                 </div>
                 <div className="flex flex-col col-span-6 md:col-span-8 font-bold mt-4">
                   <span className="line-through mr-2">

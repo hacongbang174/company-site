@@ -29,8 +29,10 @@ export default function NewDetailPage({ params }: { params: { id: string } }) {
       />
 
       <div className="w-full mt-4 text-center">
-        <p>{data?.name}</p>
-        <p>{moment(data?.updated_date).format('DD/MM/YYYY')}</p>
+        <p className="font-bold text-2xl">{data?.name}</p>
+        <p className="font-bold">
+          {moment(data?.updated_date).format('DD/MM/YYYY')}
+        </p>
       </div>
       <div
         className="w-full mt-4 px-40 pl-40 mt-8"
