@@ -1,3 +1,5 @@
+'use client'
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faEnvelope,
@@ -7,6 +9,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 export const Footer = () => {
+  const [data, setData] = useState<any>({})
+  useEffect(() => {
+    fetch(
+      `https://gce.onedev.top/api/v1/site/organizations/efe87002-8bc2-4306-9db6-205b487abba6?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+        console.log(data)
+      })
+  }, [])
+
   return (
     <div className="text-center text-lg-start text-white bg-gray-700">
       <section className="m-4 p-4">
@@ -15,11 +29,11 @@ export const Footer = () => {
             <h6 className="text-uppercase fw-bold mb-4">
               CÔNG TY CỔ PHẦN ĐẦU TƯ CÔNG NGHỆ TST ECO
             </h6>
-            <h6 className="text-uppercase fw-bold mb-4">TST ECO JSC</h6>
+            <h6 className="text-uppercase fw-bold mb-4">{data?.name}</h6>
           </div>
 
           <div className="mx-auto mb-4">
-            <h6 className="text-uppercase fw-bold mb-4">Products</h6>
+            <h6 className="text-uppercase fw-bold mb-4">Sản phẩm</h6>
             <p>
               <a href="#!" className="text-reset">
                 Angular

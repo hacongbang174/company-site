@@ -14,12 +14,12 @@ import clsx from 'clsx'
 
 export const Navbar = () => {
   return (
-    <NextUINavbar isBordered>
+    <NextUINavbar isBordered className="bg-lime-100">
       <NavbarBrand className="grow-0">
         <AcmeLogo />
         <p className="font-bold text-inherit">GCE</p>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4">
+      <NavbarContent className="hidden flex gap-4">
         {siteConfig.navItems.map((item) => (
           <NavbarItem key={item.href}>
             <NextLink
