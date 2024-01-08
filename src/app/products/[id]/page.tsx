@@ -47,24 +47,48 @@ export default function ProductDetailPage({
                 <div className="relative col-span-6 md:col-span-4 flex">
                   <p className="mr-2 font-bold text-xl">
                     {data?.name}
-                    <span className="bg-pink-200 text-xl ml-2">
-                      -{data?.percent_discount}%
-                    </span>
+                    {+data?.percent_discount === 0 ? (
+                      ''
+                    ) : (
+                      <span className="bg-pink-200 text-xl ml-2">
+                        -{+data?.percent_discount}%
+                      </span>
+                    )}
                   </p>
                 </div>
                 <div className="flex flex-col col-span-6 md:col-span-8 font-bold mt-4">
-                  <span className="line-through mr-2">
-                    {data?.price.toLocaleString('it-IT', {
+                  {+data?.price === 0 ? (
+                    <div className="flex mt-4">
+                      <span className="text-red-500 font-bold">Liên hệ</span>
+                    </div>
+                  ) : (
+                    <div className="flex mt-4">
+                      <span className="line-through mr-2">
+                        {(+data?.price).toLocaleString('it-IT', {
+                          style: 'currency',
+                          currency: 'VND',
+                        })}
+                      </span>
+                      <span className="text-red-500 font-bold">
+                        {(+data?.amount).toLocaleString('it-IT', {
+                          style: 'currency',
+                          currency: 'VND',
+                        })}
+                      </span>
+                    </div>
+                  )}
+                  {/* <span className="line-through mr-2">
+                    {(+data?.price).toLocaleString('it-IT', {
                       style: 'currency',
                       currency: 'VND',
                     })}
                   </span>
                   <span className="text-red-500 font-bold">
-                    {data?.amount.toLocaleString('it-IT', {
+                    {(+data?.amount).toLocaleString('it-IT', {
                       style: 'currency',
                       currency: 'VND',
                     })}{' '}
-                  </span>
+                  </span> */}
                 </div>
                 <div className="flex flex-col col-span-6 md:col-span-8 mt-4 max-h-[72px] overflow-hidden text-ellipsis">
                   Mô tả :

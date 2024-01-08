@@ -53,20 +53,26 @@ export default function ProductsPage() {
                   </div>
                 </div>
                 <CardFooter>
-                  <div className="flex mt-4">
-                    <span className="line-through mr-2">
-                      {item?.price.toLocaleString('it-IT', {
-                        style: 'currency',
-                        currency: 'VND',
-                      })}
-                    </span>
-                    <span className="text-red-500 font-bold">
-                      {item?.amount.toLocaleString('it-IT', {
-                        style: 'currency',
-                        currency: 'VND',
-                      })}
-                    </span>
-                  </div>
+                  {+item?.price === 0 ? (
+                    <div className="flex mt-4">
+                      <span className="text-red-500 font-bold">Liên hệ</span>
+                    </div>
+                  ) : (
+                    <div className="flex mt-4">
+                      <span className="line-through mr-2">
+                        {(+item?.price).toLocaleString('it-IT', {
+                          style: 'currency',
+                          currency: 'VND',
+                        })}
+                      </span>
+                      <span className="text-red-500 font-bold">
+                        {(+item?.amount).toLocaleString('it-IT', {
+                          style: 'currency',
+                          currency: 'VND',
+                        })}
+                      </span>
+                    </div>
+                  )}
                 </CardFooter>
               </Card>
             </div>
