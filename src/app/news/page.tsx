@@ -57,6 +57,7 @@ export default function NewsPage() {
                   className="object-cover h-72 lg:min-w-[300px] md:min-w-[200px] sm:w-[800px] w-[600px]"
                   shadow="md"
                   src={item?.images[0]?.image_url}
+                  width={300}
                 />
                 <div className="p-4">
                   <div className="relative col-span-6 md:col-span-4 flex">

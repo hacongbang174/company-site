@@ -40,12 +40,12 @@ export default function ProductsPage() {
                 <Image
                   alt="Album cover"
                   className="object-cover h-80 max-w-100"
-                  height={200}
+                  height={300}
                   shadow="md"
                   src={item?.images[0]?.image_url}
                   width="600px"
                 />
-                <CardBody className="flex flex-col col-span-6 md:col-span-8 font-bold mt-4">
+                <CardBody className="flex flex-col h-[120px] col-span-6 md:col-span-8 font-bold mt-4">
                   <div className="p-4">
                     <span className="line-clamp-2">
                       {item?.name.toUpperCase()}

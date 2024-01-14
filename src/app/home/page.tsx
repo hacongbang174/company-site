@@ -39,17 +39,17 @@ export default function HomePage() {
           </div>
         </Card>
       </div>
-      <div className="flex mt-4 mx-20 ml-20 text-xl text-black">
+      {/* <div className="flex mt-4 mx-20 ml-20 text-xl text-black">
         <p className="text-3xl font-bold">Lịch sử và các cột mốc quan trọng</p>
-      </div>
+      </div> */}
       <div className=" mt-4 mx-20 ml-20 text-lg text-black">
         <p className="text-3xl font-bold">Giá trị cốt lõi</p>
         <div className="flex flex-wrap mt-4">
           <div className="max-w-[420px] mr-4">
             <Image
               alt="Album cover"
-              className="object-cover h-20 w-20"
-              src="https://lh4.googleusercontent.com/cOoY2I6iNPEHp8aVkQ7jJAh5l5hnItigyBBC8zH8M1IbpbJJm26V9MWQOhRlDtVNHZN2DE69YRaoceYZ4ZYA1KNeXozsW4Bll8xYQLkQrr6YpXEdLMoR3kkrFbcTOnZi5Q=w1280"
+              className="object-cover h-40 w-80"
+              src="/images/khach-hang-la-trong-tam.jpg"
             />
             <p className="mt-4 text-xl font-bold">
               {data?.core_values?.substring(
@@ -67,8 +67,8 @@ export default function HomePage() {
           <div className="max-w-[420px] mr-4">
             <Image
               alt="Album cover"
-              className="object-cover h-20 w-20"
-              src="https://lh4.googleusercontent.com/Aa7EUhD1_I9oOpzBUYNp0jxVy5qEVjC2sfiCYpllyO3KXB74myUADYDVe4oun14AASzHFgCkI2VNbFf04rZCe6rBJEKfebX7HBk8t_YkGnqXIgvnrR7SYwZYAXZvGu4P1g=w1280"
+              className="object-cover h-40 w-80"
+              src="/images/doi-moi-va-sang-tao.jpg"
             />
             <p className="mt-4 text-xl font-bold">
               {data?.core_values?.substring(
@@ -86,8 +86,8 @@ export default function HomePage() {
           <div className="max-w-[420px] mr-4">
             <Image
               alt="Album cover"
-              className="object-cover h-20 w-20 "
-              src="https://lh5.googleusercontent.com/98bCoyQ7qFazsNc2nvs5FLy_GYaqwBD5EpV5I4EZ6IGfd2zKkT2Oe2wn3B7LDFLts2BIT7POhkuwegbTmEIe8UgnmS_M9-b4EFTZiX3x1wiDhPWhVEV-18MgF6j4Ki9SQA=w1280"
+              className="object-cover h-40 w-80 "
+              src="/images/hop-tac-vi-muc-tieu-chung.jpg"
             />
 
             <p className="mt-4 font-bold text-xl">
@@ -107,8 +107,8 @@ export default function HomePage() {
           <div className="max-w-[420px] mr-4">
             <Image
               alt="Album cover"
-              className="object-cover h-20 w-20 "
-              src="https://lh5.googleusercontent.com/98bCoyQ7qFazsNc2nvs5FLy_GYaqwBD5EpV5I4EZ6IGfd2zKkT2Oe2wn3B7LDFLts2BIT7POhkuwegbTmEIe8UgnmS_M9-b4EFTZiX3x1wiDhPWhVEV-18MgF6j4Ki9SQA=w1280"
+              className="object-cover h-40 w-80 "
+              src="/images/phat-trien-ban-than.jpg"
             />
 
             <p className="mt-4 font-bold text-xl">
@@ -128,8 +128,8 @@ export default function HomePage() {
           <div className="max-w-[420px] mr-4">
             <Image
               alt="Album cover"
-              className="object-cover h-20 w-20 "
-              src="https://lh5.googleusercontent.com/98bCoyQ7qFazsNc2nvs5FLy_GYaqwBD5EpV5I4EZ6IGfd2zKkT2Oe2wn3B7LDFLts2BIT7POhkuwegbTmEIe8UgnmS_M9-b4EFTZiX3x1wiDhPWhVEV-18MgF6j4Ki9SQA=w1280"
+              className="object-cover h-40 w-80 "
+              src="/images/lam-viec-hieu-qua.jpg"
             />
 
             <p className="mt-4 font-bold text-xl">

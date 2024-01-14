@@ -11,6 +11,16 @@ describe('API Tests', () => {
     // Add more assertions based on your API response structure
   });
 
+  test('should fetch home data 2', async () => {
+    const id = 'efe87002-8bc2-4306-9db6-205b487abb2';
+    const data = await getHomeData(id);
+
+    // Add your assertions based on the expected data from the API
+    expect(data.id).toBe(id);
+    expect(data.name).toBeDefined();
+    // Add more assertions based on your API response structure
+  });
+
   test('should handle errors gracefully', async () => {
     const invalidDataId = -1;
 
