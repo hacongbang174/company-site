@@ -2,7 +2,7 @@ import { getHomeData } from '../api/api';
 
 describe('API Tests', () => {
   test('should fetch home data', async () => {
-    const id = 'efe87002-8bc2-4306-9db6-205b487abba6';
+    const id = '24d7e420-beb3-494d-a5e0-fa3a7421c86e';
     const data = await getHomeData(id);
 
     // Add your assertions based on the expected data from the API

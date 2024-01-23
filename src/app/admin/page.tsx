@@ -1,7 +1,6 @@
-import { title } from '@/components/primitives'
+'user client'
 import {
   Card,
-  Spacer,
   Button,
   Input,
   Checkbox,

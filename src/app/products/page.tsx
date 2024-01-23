@@ -9,7 +9,7 @@ export default function ProductsPage() {
 
   useEffect(() => {
     fetch(
-      `https://gce.onedev.top/api/v1/site/e-commerce/products?include=author%2Csummary%2Cuser%2Cproduct_category%2Cimages%2Corganization&organization_id=efe87002-8bc2-4306-9db6-205b487abba6`
+      `https://gce.onedev.top/api/v1/site/e-commerce/products?include=author%2Csummary%2Cuser%2Cproduct_category%2Cimages%2Corganization&organization_id=24d7e420-beb3-494d-a5e0-fa3a7421c86e`
     )
       .then((res) => res.json())
       .then((data) => {

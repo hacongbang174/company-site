@@ -7,7 +7,7 @@ export default function HomePage() {
   const [data, setData] = useState<any>({})
   useEffect(() => {
     fetch(
-      `https://gce.onedev.top/api/v1/site/organizations/efe87002-8bc2-4306-9db6-205b487abba6?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
+      `https://gce.onedev.top/api/v1/site/organizations/24d7e420-beb3-494d-a5e0-fa3a7421c86e?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -42,10 +42,10 @@ export default function HomePage() {
       {/* <div className="flex mt-4 mx-20 ml-20 text-xl text-black">
         <p className="text-3xl font-bold">Lịch sử và các cột mốc quan trọng</p>
       </div> */}
-      <div className=" mt-4 mx-20 ml-20 text-lg text-black">
+      <div className=" mt-8 mx-20 ml-20 text-lg text-black">
         <p className="text-3xl font-bold">Giá trị cốt lõi</p>
         <div className="flex flex-wrap mt-4">
-          <div className="max-w-[420px] mr-4">
+          <div className="max-w-[420px] mr-4 mt-4">
             <Image
               alt="Album cover"
               className="object-cover h-40 w-80"
@@ -64,7 +64,7 @@ export default function HomePage() {
               )}
             </p>
           </div>
-          <div className="max-w-[420px] mr-4">
+          <div className="max-w-[420px] mr-4 mt-4">
             <Image
               alt="Album cover"
               className="object-cover h-40 w-80"
@@ -83,7 +83,7 @@ export default function HomePage() {
               )}
             </p>
           </div>
-          <div className="max-w-[420px] mr-4">
+          <div className="max-w-[420px] mr-4 mt-4">
             <Image
               alt="Album cover"
               className="object-cover h-40 w-80 "
@@ -104,7 +104,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="max-w-[420px] mr-4">
+          <div className="max-w-[420px] mr-4 mt-4">
             <Image
               alt="Album cover"
               className="object-cover h-40 w-80 "
@@ -125,7 +125,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="max-w-[420px] mr-4">
+          <div className="max-w-[420px] mr-4 mt-4">
             <Image
               alt="Album cover"
               className="object-cover h-40 w-80 "
@@ -140,8 +140,7 @@ export default function HomePage() {
             </p>
             <p className="mt-4">
               {data?.core_values?.substring(
-                data?.core_values.indexOf('Hợp tác vì mục tiêu chung') + 17,
-                data?.core_values.indexOf('Phát triển bản thân'),
+                data?.core_values.indexOf('Làm việc hiệu quả') + 17,
                 data?.core_values.length - 1
               )}
             </p>
