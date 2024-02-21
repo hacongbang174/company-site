@@ -21,9 +21,30 @@ import { siteConfig } from '@/config/site'
 import NextLink from 'next/link'
 import clsx from 'clsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export const Navbar = () => {
+  const router = useRouter()
+  const [user, setUser] = useState<any>({})
+
+  const handleLogout = () => {
+    localStorage.removeItem('access_token')
+    localStorage.removeItem('user')
+    setUser({})
+    router.push('/login')
+  }
+
+  // Update the useEffect dependency array to include 'user'
+  useEffect(() => {
+    const user = localStorage.getItem('user')
+    if (user) {
+      setUser(JSON.parse(user))
+    }
+  }, [])
+
   return (
     <NextUINavbar isBordered className="bg-lime-50">
       <NavbarBrand className="grow-0">
@@ -46,43 +67,61 @@ export const Navbar = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-      <NavbarContent justify="end">
-        <Dropdown placement="bottom-start">
-          <DropdownTrigger>
-            <User
-              as="button"
-              avatarProps={{
-                isBordered: true,
-                src: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
-              }}
-              className="transition-transform"
-              name="Tony Reichert"
-            />
-          </DropdownTrigger>
-          <DropdownMenu aria-label="User Actions" variant="flat">
-            <DropdownItem key="logout" color="danger">
-              Log Out
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-
-        <Dropdown placement="bottom-start">
-          <DropdownTrigger>
-            <Button
-              size="sm"
-              radius="full"
-              className="bg-lime-700 text-white shadow-lg"
-            >
-              {/* <FontAwesomeIcon icon={faCirclePlus} size="2xl" color="primary" /> */}
-              <FontAwesomeIcon icon={faPlus} size="xl" />
+      {Object.keys(user).length === 0 ? (
+        <NavbarContent justify="end">
+          <NavbarItem>
+            <Button as={Link} color="primary" href="/login" variant="flat">
+              Login
             </Button>
-          </DropdownTrigger>
-          <DropdownMenu aria-label="User Actions" variant="flat">
-            <DropdownItem key="create_news">Thêm tin tức</DropdownItem>
-            <DropdownItem key="create_product">Thêm sản phẩm</DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </NavbarContent>
+          </NavbarItem>
+        </NavbarContent>
+      ) : (
+        <NavbarContent justify="end">
+          <Dropdown placement="bottom-start">
+            <DropdownTrigger>
+              <User
+                as="button"
+                avatarProps={{
+                  isBordered: true,
+                  src: user.thumbnail,
+                }}
+                className="transition-transform"
+                name={user.username}
+              />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="User Actions" variant="flat">
+              <DropdownItem key="logout" color="danger" onClick={handleLogout}>
+                Log Out
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+
+          <Dropdown placement="bottom-start">
+            <DropdownTrigger>
+              <Button
+                size="sm"
+                radius="full"
+                className="bg-lime-700 text-white shadow-lg"
+              >
+                {/* <FontAwesomeIcon icon={faCirclePlus} size="2xl" color="primary" /> */}
+                <FontAwesomeIcon icon={faPlus} size="xl" />
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="User Actions" variant="flat">
+              <DropdownItem key="create_news" as={Link} href="/news/create">
+                Thêm tin tức
+              </DropdownItem>
+              <DropdownItem
+                key="create_product"
+                as={Link}
+                href="/products/create"
+              >
+                Thêm sản phẩm
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </NavbarContent>
+      )}
     </NextUINavbar>
   )
 }

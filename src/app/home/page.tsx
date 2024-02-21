@@ -22,7 +22,7 @@ export default function HomePage() {
         className="object-cover h-60 rounded-none"
         height={100}
         shadow="md"
-        src="/images/background-org.jpg"
+        src="/images/background.jpg"
         width="100%"
       />
       <div className="flex mt-4 mx-20 ml-20 justify-center text-lg">
@@ -60,7 +60,7 @@ export default function HomePage() {
             <p className="mt-4">
               {data?.core_values?.substring(
                 data?.core_values.indexOf('Khách hàng là trọng tâm') + 23,
-                data?.core_values.indexOf('Đổi mới và sáng tạo')
+                data?.core_values.indexOf('Đổi mới và sáng tạo') - 3
               )}
             </p>
           </div>
@@ -79,7 +79,7 @@ export default function HomePage() {
             <p className="mt-4">
               {data?.core_values?.substring(
                 data?.core_values.indexOf('Đổi mới và sáng tạo') + 19,
-                data?.core_values.indexOf('Hợp tác vì mục tiêu chung')
+                data?.core_values.indexOf('Hợp tác vì mục tiêu chung') - 3
               )}
             </p>
           </div>
@@ -99,7 +99,7 @@ export default function HomePage() {
             <p className="mt-4">
               {data?.core_values?.substring(
                 data?.core_values.indexOf('Hợp tác vì mục tiêu chung') + 25,
-                data?.core_values.indexOf('Phát triển bản thân')
+                data?.core_values.indexOf('Phát triển bản thân') - 3
               )}
             </p>
           </div>
@@ -120,7 +120,7 @@ export default function HomePage() {
             <p className="mt-4">
               {data?.core_values?.substring(
                 data?.core_values.indexOf('Phát triển bản thân') + 19,
-                data?.core_values.indexOf('Làm việc hiệu quả')
+                data?.core_values.indexOf('Làm việc hiệu quả') - 3
               )}
             </p>
           </div>
@@ -141,7 +141,7 @@ export default function HomePage() {
             <p className="mt-4">
               {data?.core_values?.substring(
                 data?.core_values.indexOf('Làm việc hiệu quả') + 17,
-                data?.core_values.length - 1
+                data?.core_values.length
               )}
             </p>
           </div>
@@ -152,9 +152,9 @@ export default function HomePage() {
       </div>
       <div className="flex mt-4 mx-20 ml-20 text-lg text-black">
         {data?.services?.map((item: any) => (
-          <p className="mt-4" key={item.id}>
-            {item.name}
-          </p>
+          <div className="mt-4 mr-8" key={item.id}>
+            - {item.name}
+          </div>
         ))}
       </div>
     </div>

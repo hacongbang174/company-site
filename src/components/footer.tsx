@@ -17,7 +17,6 @@ export const Footer = () => {
       .then((res) => res.json())
       .then((data) => {
         setData(data)
-        console.log(data)
       })
   }, [])
 
