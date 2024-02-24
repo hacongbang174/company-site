@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react'
 
 export default function ProductDetailPage() {
   const router = useRouter()
-
+  const [access_token, setAccessToken] = useState('')
   const [categories, setCategories] = useState([])
   const [type, setType] = useState('')
   const [images, setImages] = useState([
@@ -48,7 +48,7 @@ export default function ProductDetailPage() {
         const response = await fetch('https://gce.onedev.top/api/v1/media', {
           method: 'POST',
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            Authorization: `Bearer ${access_token}`,
           },
           body: formData,
         })
@@ -90,7 +90,6 @@ export default function ProductDetailPage() {
     organization_id: '24d7e420-beb3-494d-a5e0-fa3a7421c86e',
   })
 
-  const access_token = localStorage.getItem('access_token')
   const getCategory = async () => {
     const response = await fetch(
       'https://gce.onedev.top/api/v1/e-commerce/product-categories',
@@ -125,6 +124,10 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     getCategory()
+    const token = localStorage.getItem('access_token')
+    if (token) {
+      setAccessToken(token)
+    }
   }, [])
 
   return (
