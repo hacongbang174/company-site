@@ -68,6 +68,14 @@ export default function ProductDetailPage() {
 
   const handleRemoveImage = (image: any) => {
     const imagesNew = images.filter((item) => item !== image)
+    if (imagesNew.length === 0) {
+      imagesNew.push({
+        name: '',
+        resource_type: 'products',
+        image_url: '',
+        description: '',
+      })
+    }
     setImages(imagesNew)
     setBody({ ...body, images: imagesNew })
   }
@@ -90,11 +98,11 @@ export default function ProductDetailPage() {
     organization_id: '24d7e420-beb3-494d-a5e0-fa3a7421c86e',
   })
 
-  const getCategory = async () => {
+  const getCategory = async (token: any) => {
     const response = await fetch(
       'https://gce.onedev.top/api/v1/e-commerce/product-categories',
       {
-        headers: { Authorization: `Bearer ${access_token}` },
+        headers: { Authorization: `Bearer ${token}` },
       }
     )
     const data = await response.json()
@@ -123,10 +131,10 @@ export default function ProductDetailPage() {
   }
 
   useEffect(() => {
-    getCategory()
     const token = localStorage.getItem('access_token')
     if (token) {
       setAccessToken(token)
+      getCategory(token)
     }
   }, [])
 
