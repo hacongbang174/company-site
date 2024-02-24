@@ -1,66 +1,77 @@
 'use client'
 
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Button,
+  Image,
   Radio,
   RadioGroup,
   Select,
   SelectItem,
 } from '@nextui-org/react'
 import { Input } from '@nextui-org/react'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function ProductDetailPage() {
-  const [displayPrice, setDisplayPrice] = useState('')
-  const formatVND = (value: any) => {
-    let formatted = new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-    }).format(value)
-    return formatted.replace(/\s*₫$/, '')
-  }
-  const parseVND = (value: any) => {
-    return Number(value.replace(/\D/g, ''))
-  }
-  const handlePriceChange = (e: any) => {
-    const parsedValue = parseVND(e.target.value)
-    setBody({ ...body, price: parsedValue })
-    setDisplayPrice(formatVND(parsedValue))
-  }
+  const router = useRouter()
+
   const [categories, setCategories] = useState([])
   const [type, setType] = useState('')
+  const [images, setImages] = useState([
+    {
+      name: '',
+      resource_type: 'products',
+      image_url: '',
+      description: '',
+    },
+  ])
+
   const setTypeValue = (value: string) => {
     setType(value)
   }
-  const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null)
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
-    setSelectedFiles(files)
+    handleUpload(files)
   }
 
-  const handleUpload = async () => {
-    if (selectedFiles) {
-      const formData = new FormData()
-      for (let i = 0; i < selectedFiles.length; i++) {
-        formData.append('images', selectedFiles[i])
-      }
-      const response = await fetch(
-        'https://gce.onedev.top/api/v1/e-commerce/images',
-        {
+  const handleUpload = async (files: any) => {
+    if (files) {
+      console.log(files)
+
+      const dataImages = []
+      for (let i = 0; i < files.length; i++) {
+        const formData = new FormData()
+        formData.append('file', files[i])
+        formData.append('mediaId', new Date().getDate().toString())
+        const response = await fetch('https://gce.onedev.top/api/v1/media', {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${localStorage.getItem('access_token')}`,
           },
           body: formData,
-        }
-      )
-      const data = await response.json()
-      console.log(data)
+        })
+        const data = await response.json()
+
+        dataImages.push({
+          name: data.Key,
+          resource_type: 'products',
+          image_url: data.Location,
+          description: data.key,
+        })
+      }
+      setBody({ ...body, images: dataImages })
+      setImages(dataImages)
     }
   }
 
-  const [images, setImages] = useState([])
+  const handleRemoveImage = (image: any) => {
+    const imagesNew = images.filter((item) => item !== image)
+    setImages(imagesNew)
+    setBody({ ...body, images: imagesNew })
+  }
+
   const [body, setBody] = useState({
     name: '',
     product_category_id: '',
@@ -68,7 +79,14 @@ export default function ProductDetailPage() {
     percent_discount: 0,
     amount: 0,
     description: '',
-    images: [],
+    images: [
+      {
+        name: '',
+        resource_type: 'products',
+        image_url: '',
+        description: '',
+      },
+    ],
     organization_id: '24d7e420-beb3-494d-a5e0-fa3a7421c86e',
   })
 
@@ -97,7 +115,12 @@ export default function ProductDetailPage() {
       }
     )
     const data = await response.json()
-    console.log(data)
+    if (data.id) {
+      alert('Thêm mới sản phẩm thành công!')
+      router.push('/products')
+    } else {
+      alert('Có lỗi xảy ra trong quá trình thêm mới sản phẩm!')
+    }
   }
 
   useEffect(() => {
@@ -156,9 +179,9 @@ export default function ProductDetailPage() {
                 name="price"
                 placeholder="Nhập giá sản phẩm"
                 className="mt-4"
-                value={displayPrice}
-                defaultValue="0"
-                onChange={handlePriceChange}
+                onChange={(e) => {
+                  setBody({ ...body, price: +e.target.value })
+                }}
               />
               <Input
                 type="number"
@@ -170,7 +193,7 @@ export default function ProductDetailPage() {
                 onChange={(e) => {
                   setBody({
                     ...body,
-                    percent_discount: parseVND(e.target.value),
+                    percent_discount: +e.target.value,
                   })
                 }}
               />
@@ -179,14 +202,14 @@ export default function ProductDetailPage() {
                 name="amount"
                 label="Giá sau khi giảm giá"
                 // placeholder="Nhập giảm giá sản phẩm"
-                value={formatVND(
-                  Number(body.price) -
-                    (Number(body.price) * Number(body.percent_discount)) / 100
-                )}
+                value={(
+                  body.price -
+                  (body.price * body.percent_discount) / 100
+                ).toString()}
                 className="mt-4"
                 disabled
                 onChange={(e) => {
-                  setBody({ ...body, amount: parseVND(e.target.value) })
+                  setBody({ ...body, amount: +e.target.value })
                 }}
               />
             </div>
@@ -202,8 +225,27 @@ export default function ProductDetailPage() {
             }}
           />
           <div className="mt-4">
-            <p>Ảnh sản phẩm</p>
-
+            <p>
+              Ảnh sản phẩm <span className="text-red-500">*</span>
+            </p>
+            <div className="flex flex-wrap">
+              {images[0].image_url !== '' &&
+                images.map((image, index) => (
+                  <div key={index} className="flex items-start mr-2">
+                    <Image
+                      width={80}
+                      alt="NextUI hero Image"
+                      src={image.image_url}
+                      className=""
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrashCan}
+                      className="text-red-500"
+                      onClick={(e) => handleRemoveImage(image)}
+                    />
+                  </div>
+                ))}
+            </div>
             <input
               type="file"
               multiple
@@ -217,6 +259,13 @@ export default function ProductDetailPage() {
             color="primary"
             className="w-1/8 text-md"
             onClick={handleSubmit}
+            isDisabled={
+              body.description === '' ||
+              body.name === '' ||
+              body.product_category_id === '' ||
+              body.images[0].image_url === '' ||
+              (type === 'price' && body.price === 0)
+            }
           >
             Tạo mới
           </Button>
