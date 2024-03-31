@@ -7,11 +7,12 @@ export default function HomePage() {
   const [data, setData] = useState<any>({})
   useEffect(() => {
     fetch(
-      `https://gce.onedev.top/api/v1/site/organizations/24d7e420-beb3-494d-a5e0-fa3a7421c86e?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
+      `https://gce.onedev.top/api/v1/site/organizations/94a2e536-aa6d-46fc-a6a3-363e03f564f2?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
     )
       .then((res) => res.json())
       .then((data) => {
         setData(data)
+        console.log(data)
       })
   }, [])
 
@@ -60,7 +61,7 @@ export default function HomePage() {
             <p className="mt-4">
               {data?.core_values?.substring(
                 data?.core_values.indexOf('Khách hàng là trọng tâm') + 23,
-                data?.core_values.indexOf('Đổi mới và sáng tạo') - 3
+                data?.core_values.indexOf('Thích ứng nhanh với mọi thay đổi')
               )}
             </p>
           </div>
@@ -72,14 +73,16 @@ export default function HomePage() {
             />
             <p className="mt-4 text-xl font-bold">
               {data?.core_values?.substring(
-                data?.core_values.indexOf('Đổi mới và sáng tạo'),
-                data?.core_values.indexOf('Đổi mới và sáng tạo') + 19
+                data?.core_values.indexOf('Thích ứng nhanh với mọi thay đổi'),
+                data?.core_values.indexOf('Thích ứng nhanh với mọi thay đổi') +
+                  32
               )}
             </p>
             <p className="mt-4">
               {data?.core_values?.substring(
-                data?.core_values.indexOf('Đổi mới và sáng tạo') + 19,
-                data?.core_values.indexOf('Hợp tác vì mục tiêu chung') - 3
+                data?.core_values.indexOf('Thích ứng nhanh với mọi thay đổi') +
+                  32,
+                data?.core_values.indexOf('Là một đội ngũ gắn kết')
               )}
             </p>
           </div>
@@ -92,18 +95,18 @@ export default function HomePage() {
 
             <p className="mt-4 font-bold text-xl">
               {data?.core_values?.substring(
-                data?.core_values.indexOf('Hợp tác vì mục tiêu chung'),
-                data?.core_values.indexOf('Hợp tác vì mục tiêu chung') + 25
+                data?.core_values.indexOf('Là một đội ngũ gắn kết'),
+                data?.core_values.indexOf('Là một đội ngũ gắn kết') + 22
               )}
             </p>
             <p className="mt-4">
               {data?.core_values?.substring(
-                data?.core_values.indexOf('Hợp tác vì mục tiêu chung') + 25,
-                data?.core_values.indexOf('Phát triển bản thân') - 3
+                data?.core_values.indexOf('Là một đội ngũ gắn kết') + 22,
+                data?.core_values.length
               )}
             </p>
           </div>
-
+          {/* 
           <div className="max-w-[420px] mr-4 mt-4">
             <Image
               alt="Album cover"
@@ -144,7 +147,7 @@ export default function HomePage() {
                 data?.core_values.length
               )}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="flex mt-4 mx-20 ml-20 text-xl text-black">

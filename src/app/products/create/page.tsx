@@ -95,7 +95,7 @@ export default function ProductDetailPage() {
         description: '',
       },
     ],
-    organization_id: '24d7e420-beb3-494d-a5e0-fa3a7421c86e',
+    organization_id: '94a2e536-aa6d-46fc-a6a3-363e03f564f2',
   })
 
   const getCategory = async (token: any) => {

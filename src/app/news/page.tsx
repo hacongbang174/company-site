@@ -13,7 +13,7 @@ export default function NewsPage() {
 
   const getNewsData = (number: number) => {
     fetch(
-      `https://gce.onedev.top/api/v1/site/news?offset=${number}&limit=10&include=user%2Cchapter%2Corganization%2Creactions%2Cmentions%2Cauthor%2Csummary%2Cimages%2Cparticipates%2Cbids%2Ctags%2Cchildren%2Cindustry&organization_id=24d7e420-beb3-494d-a5e0-fa3a7421c86e`
+      `https://gce.onedev.top/api/v1/site/news?offset=${number}&limit=10&include=user%2Cchapter%2Corganization%2Creactions%2Cmentions%2Cauthor%2Csummary%2Cimages%2Cparticipates%2Cbids%2Ctags%2Cchildren%2Cindustry&organization_id=94a2e536-aa6d-46fc-a6a3-363e03f564f2`
     )
       .then((res) => res.json())
       .then((data) => {

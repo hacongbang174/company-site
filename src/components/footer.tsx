@@ -12,7 +12,7 @@ export const Footer = () => {
   const [data, setData] = useState<any>({})
   useEffect(() => {
     fetch(
-      `https://gce.onedev.top/api/v1/site/organizations/24d7e420-beb3-494d-a5e0-fa3a7421c86e?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
+      `https://gce.onedev.top/api/v1/site/organizations/94a2e536-aa6d-46fc-a6a3-363e03f564f2?include=users%2Cindustries%2Cservices%2Ccountry%2Ccity%2Corganization_users%2Corganization_users_position%2Corganization_users_user_invited%2Corganization_users_iam_group%2Cchildren%2Cchilden_organization_users%2Cchildren_organization_users_position%2Cchildren_organization_users_iam_group%2Ciam_groups%2Cchapters%2Csummary`
     )
       .then((res) => res.json())
       .then((data) => {
